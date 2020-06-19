@@ -1,0 +1,31 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@ui": "./src/ui",
+          "@hoc": "./src/hoc",
+          "@utils": "./src/utils",
+          "@libs": "./src/libs",
+          "@interfaces": "./src/interfaces",
+          "@actions": "./src/actions",
+          "@store": "./src/store",
+          "@constants": "./src/constants"
+        }
+      }
+    ],
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "decoratorsBeforeExport": true
+      }
+    ],
+    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-proposal-object-rest-spread"]
+  ]
+}
