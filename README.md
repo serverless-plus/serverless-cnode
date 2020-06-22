@@ -1,38 +1,29 @@
-# nextjs-cnode
+# serverless-cnode
 
-> A cnodejs client using next.js 
-
+A cnodejs client using next.js deploy to Serverless
 
 ## Setup
 
 ```bash
-npm install
+$ npm install
 
-npm run dev
-
+$ npm run dev
 ```
-
-
 
 ## Build
 
 
 ```bash
-npm run build
-
+$ npm run build
 ```
 
 
 ## Deploy
 
+```bash
+$ npm run deploy
 ```
-sls deploy
 
-```
+## License
 
-## Process
-
-- [x] 所有页面渲染逻辑
-- [ ] token登录及cookie存储
-- [ ] 回复发布
-- [ ] 缓存机制
+MIT
