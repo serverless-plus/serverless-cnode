@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import * as actions from '@actions/auth';
 import { IAuth } from '@interfaces/auth';
 
-import './index.scss';
-
 type PageStateProps = {
   userInfo: IAuth;
 };

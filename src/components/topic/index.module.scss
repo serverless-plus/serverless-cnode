@@ -10,10 +10,15 @@
   // height: 65px;
   // margin-bottom: 5px;
   // margin-top: 5px;
-}
 
-.info .author {
-  font-size: 28px;
+  .author {
+    font-size: 28px;
+  }
+
+  .replies {
+    font-size: 20px;
+    color: darkgray;
+  }
 }
 
 .bold {
@@ -22,10 +27,10 @@
 }
 
 .avatar {
-  max-width: 65Px;
-  max-height: 65Px;
+  max-width: 65px;
+  max-height: 65px;
   border-radius: 50%;
-  margin-right: 10Px;
+  margin-right: 10px;
 }
 
 .middle {
@@ -39,24 +44,19 @@
   margin-right: 10px;
 }
 
-.info .replies {
-  font-size: 20px;
-  color: darkgray;
-}
-
 .node {
   float: right;
-}
 
-.node .tag {
-  font-size: 24px;
-  padding: 5px 15px;
-  float: right;
-  background-color: #eeeeee;
-  border-radius: 5px;
+  .tag {
+    font-size: 24px;
+    padding: 5px 15px;
+    float: right;
+    background-color: #eeeeee;
+    border-radius: 5px;
+  }
 }
 
 .title {
   margin-top: 10px;
-  font-size: 30px;
+  font-size: 48px;
 }

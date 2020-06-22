@@ -3,11 +3,12 @@ import { withUser } from '@hoc/router';
 import { View } from '@ui';
 import Header from '@components/header';
 import * as utils from '@libs/utils';
-import classNames from 'classnames';
 import { post } from '@utils/request';
 import Head from 'next/head';
 import Layout from '@components/layout';
 import { IAuth } from '@interfaces/auth';
+
+import styles from './index.module.scss';
 
 type PageStateProps = {
   userInfo: IAuth;
@@ -134,27 +135,28 @@ class Add extends Component<IProps, PageState> {
           <title>发表</title>
         </Head>
         <Header pageType={'主题'} fixHead={true} showMenu={true} />
-        <View className='add-container'>
-          <View className='line'>
+        <View className={styles['add-container']}>
+          <View className={styles['line']}>
             选择分类：
             <select
-              className='add-tab'
+              className={styles['add-tab']}
               value={this.state.topic.tab}
               onChange={this.handleTopicTabChange}>
               <option value='share'>分享</option>
               <option value='ask'>问答</option>
               <option value='job'>招聘</option>
             </select>
-            <View className='add-btn' onClick={this.addTopic.bind(this)}>
+            <View
+              className={styles['add-btn']}
+              onClick={this.addTopic.bind(this)}>
               发布
             </View>
           </View>
-          <View className='line'>
+          <View className={styles['line']}>
             <input
-              className={classNames({
-                'add-title': 1,
-                err: err == 'title',
-              })}
+              className={`${styles['add-title']} ${
+                err === 'title' && styles['err']
+              }}`}
               value={this.state.topic.title}
               onChange={this.handleTopicChange}
               type='text'
@@ -163,10 +165,9 @@ class Add extends Component<IProps, PageState> {
             />
           </View>
           <textarea
-            className={classNames({
-              'add-content': 1,
-              err: err == 'content',
-            })}
+            className={`${styles['add-content']} ${
+              err === 'content' && styles['err']
+            }`}
             value={this.state.topic.content}
             onChange={this.handleTopicContentChange}
             maxLength={9999}

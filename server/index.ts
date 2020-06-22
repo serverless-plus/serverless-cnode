@@ -1,6 +1,7 @@
 import { join } from 'path';
 import Next from 'next';
 import Express from 'express';
+import { ParsedUrlQuery } from 'querystring';
 import Cache from './cache';
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -10,7 +11,7 @@ const app = Next({ dev });
 const handle = app.getRequestHandler();
 
 function getCacheKey(req) {
-  return `${req.path}`;
+  return `${req.url}`;
 }
 async function cacheRender(req, res) {
   const key = getCacheKey(req);
@@ -63,7 +64,12 @@ async function startServer() {
     return await cacheRender(req, res);
   });
   server.get('/message', async (req, res) => {
-    return await cacheRender(req, res);
+    return await app.renderToHTML(
+      req,
+      res,
+      req.path,
+      req.query as ParsedUrlQuery,
+    );
   });
 
   server.get('*', (req, res) => {

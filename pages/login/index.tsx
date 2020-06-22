@@ -5,7 +5,7 @@ import { withUser } from '@hoc/router';
 import * as utils from '@libs/utils';
 import Layout from '@components/layout';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 type PageStateProps = {};
 
@@ -56,10 +56,10 @@ class Login extends Component<IProps, PageState> {
     return (
       <Layout className='login-page' title='登录'>
         <Header pageType={'登录'} fixHead={true} needAdd={true} />
-        <View className='page-body'>
-          <View className='label'>
+        <View className={styles['page-body']}>
+          <View className={styles['label']}>
             <input
-              className='txt'
+              className={styles['txt']}
               type='text'
               placeholder='Access Token'
               value={token}
@@ -67,8 +67,8 @@ class Login extends Component<IProps, PageState> {
               maxLength={36}
             />
           </View>
-          <View className='label'>
-            <View className='button' onClick={this.logon}>
+          <View className={styles['label']}>
+            <View className={styles['button']} onClick={this.logon}>
               登录
             </View>
           </View>

@@ -14,11 +14,13 @@ $gap: 5px;
 body {
   height: 100%;
   width: 100%;
-  font-size: 14px;
+  font-size: 24px;
   color: #313131;
   overflow-x: hidden;
   line-height: 1;
-  background: url('/static/images/loading.gif') no-repeat center 250px;
+  background-image: url('../../images/loading.gif');
+  background-repeat: no-repeat;
+  background-position: center 250px;
 }
 
 html {
@@ -98,6 +100,8 @@ a {
   margin: $gap * 2 0;
   padding: 0 $gap * 2;
   display: flex;
+  align-items: center;
+
   .tab {
     display: inline-block;
     width: $gap * 8;
@@ -115,7 +119,7 @@ a {
     color: $colorfff;
   }
   .title {
-    font-size: $gap * 3.6;
+    font-size: $gap * 8;
     font-weight: bold;
     display: block;
     width: 100%;
@@ -124,12 +128,12 @@ a {
   }
   .head {
     display: inline-block;
-    width: $gap * 9;
-    height: $gap * 9;
+    width: $gap * 14;
+    height: $gap * 14;
     margin-right: $gap * 2;
     border-radius: 10px;
     img {
-      width: $gap * 9;
+      width: $gap * 14;
       border: 2px solid #fff6e6;
       border-radius: 50%;
     }
@@ -143,7 +147,7 @@ a {
       clear: both;
     }
     .t-title {
-      font-size: $gap * 3.6;
+      font-size: $gap * 5;
       font-weight: bold;
       width: 100%;
       color: #333;
@@ -169,7 +173,7 @@ a {
       .name {
         margin-top: $gap * 2;
         color: $color80;
-        font-size: $gap * 2.4;
+        font-size: $gap * 4;
       }
     }
   }
@@ -218,10 +222,10 @@ $text: #34495e;
 $padding: 15px;
 $border: 1px solid $light;
 $radius: 4px;
-$font-title: 16px;
-$font-content: 14px;
-$font-info: 12px;
-$font-tag: 10px;
+$font-title: 28px;
+$font-content: 28px;
+$font-info: 24px;
+$font-tag: 20px;
 
 /* 综合布局 */
 

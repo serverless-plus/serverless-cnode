@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from '@ui';
 import PropTypes from 'prop-types';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 export default class Loading extends Component<{
   size;
@@ -31,10 +31,10 @@ export default class Loading extends Component<{
     const ringStyle = Object.assign({}, colorStyle, sizeStyle);
 
     return (
-      <View className='at-loading' style={sizeStyle}>
-        <View className='at-loading__ring' style={ringStyle} />
-        <View className='at-loading__ring' style={ringStyle} />
-        <View className='at-loading__ring' style={ringStyle} />
+      <View className={styles['at-loading']} style={sizeStyle}>
+        <View className={styles['at-loading__ring']} style={ringStyle} />
+        <View className={styles['at-loading__ring']} style={ringStyle} />
+        <View className={styles['at-loading__ring']} style={ringStyle} />
       </View>
     );
   }

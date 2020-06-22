@@ -4,8 +4,6 @@ import { View, Text } from '@ui';
 import NvMenu from '../menu';
 import Link from '../link';
 
-import './index.scss';
-
 type IProps = {
   pageType: string;
   fixHead: boolean;

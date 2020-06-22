@@ -1,7 +1,8 @@
 import { View } from '@ui';
 import { Component } from 'react';
 import ActivityIndicator from '@components/activityIndicator';
-import './index.scss';
+
+import styles from './index.module.scss';
 
 export default class Loading extends Component<{
   height: string;
@@ -9,7 +10,7 @@ export default class Loading extends Component<{
   render() {
     const { height = '8rem' } = this.props;
     return (
-      <View className='loading2' style={{ minHeight: height, height }}>
+      <View className={styles.loading2} style={{ minHeight: height, height }}>
         <ActivityIndicator color='#9d8352' />
       </View>
     );

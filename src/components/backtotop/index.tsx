@@ -4,7 +4,7 @@ import { View } from '@ui';
 import { throttle } from 'throttle-debounce';
 import * as utils from '@libs/utils';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 type PageOwnProps = {};
 
@@ -59,7 +59,9 @@ class BackTop extends Component {
     return (
       <View>
         {show ? (
-          <View className='iconfont icon-top' onClick={this.goTop}>
+          <View
+            className={`iconfont ${styles['icon-top']}`}
+            onClick={this.goTop}>
             &#xe611;
           </View>
         ) : (

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Loading from '@components/loading';
 import { View, Text } from '@ui';
 
-import './index.scss';
+import './index.module.scss';
 
 interface Iprops {
   size?: number;

@@ -5,7 +5,6 @@ import { withUser } from '@hoc/router';
 import classNames from 'classnames';
 import update from 'immutability-helper';
 import { post } from '@utils/request';
-import './index.scss';
 
 const markdown = require('markdown').markdown;
 

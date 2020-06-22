@@ -1,0 +1,16 @@
+org: serverless-cnode
+app: serverless-cnode
+stage: dev
+component: cos
+name: cos-dot-next
+
+inputs:
+  # src 配置成你的next项目构建的目标目录
+  src: ../.next/static
+  # 由于 next框架在访问静态文件会自动附加 _next 前缀，所以这里需要配置上传 COS 的目标目录为 /_next
+  targetDir: /_next/static
+  bucket: serverless-cnode
+  region: ap-guangzhou
+  protocol: https
+  acl:
+    permissions: public-read

@@ -1,0 +1,24 @@
+org: serverless-cnode
+app: serverless-cnode
+stage: dev
+component: cdn
+name: cdn-cnode
+
+inputs:
+  area: mainland
+  domain: cnode.yuga.chat
+  origin:
+    origins:
+      - ${output:${stage}:${app}:cos-dot-next.cosOrigin}
+    originType: cos
+    originPullProtocol: https
+  serviceType: web
+  forceRedirect:
+    switch: on
+    redirectType: https
+    redirectStatusCode: 301
+  https:
+    switch: on
+    http2: on
+    certInfo:
+      certId: 'eGkM75xv'

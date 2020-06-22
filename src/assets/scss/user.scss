@@ -1,7 +1,7 @@
 /*侧边栏用户信息区域*/
 .user-info {
   padding: 15px;
-  font-size: 15px;
+  font-size: 24px;
   color: #313131;
 }
 
@@ -27,7 +27,7 @@
   .login {
     float: left;
     &:before {
-      background: url('/static/images/components/login_icon.png') no-repeat left
+      background: url('../images/components/login_icon.png') no-repeat left
         center;
       background-size: 24px 24px;
     }
@@ -37,7 +37,7 @@
 /*已登录*/
 .login-yes {
   height: 100%;
-  background: url('/static/images/components/go_next_icon.png') no-repeat right
+  background: url('../images/components/go_next_icon.png') no-repeat right
     center;
   background-size: 6px 10px;
   overflow: hidden;
@@ -45,8 +45,7 @@
   .avertar {
     width: 40px;
     height: 40px;
-    background: url('/static/images/components/user.png') no-repeat center
-      center;
+    background: url('../images/components/user.png') no-repeat center center;
     background-size: 40px 40px;
     border-radius: 20px;
     overflow: hidden;
@@ -76,8 +75,7 @@
   }
   &:after {
     display: block;
-    background: url('/static/images/components/go_icon.png') no-repeat center
-      right;
+    background: url('../images/components/go_icon.png') no-repeat center right;
     background-size: 7px 7px;
   }
 }
@@ -94,8 +92,7 @@
     border-radius: 50%;
     margin-top: $gap * 3;
     display: inline-block;
-    background: url('/static/images/components/user.png') no-repeat center
-      center;
+    background: url('../images/components/user.png') no-repeat center center;
     background-size: 100px 100px;
   }
   .u-name {
@@ -144,7 +141,7 @@
     width: 50%;
     padding: $gap * 2.3 0;
     flex: 0 1 auto;
-    font-size: 16px;
+    font-size: 32px;
     text-align: center;
     font-weight: bold;
     border-bottom: solid 1px $colord4;

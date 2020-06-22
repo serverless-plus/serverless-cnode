@@ -6,7 +6,7 @@ import Link from '@components/link';
 import * as utils from '@libs/utils';
 import { ITopic } from '@interfaces/topic';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 interface IProps {
   topic: ITopic;
@@ -34,15 +34,15 @@ class Topic extends Component<IProps, {}> {
     const classnames = 'stitle ' + this.getTabInfo(tab, good, top, true);
     const tit = this.getTabInfo(tab, good, top, false);
     return (
-      <Link className='topic' to={{ url: '/topic?id=' + id }}>
+      <Link className={styles.topic} to={{ url: '/topic?id=' + id }}>
         <h3 className={classnames} title={tit}>
           {title}
         </h3>
         <View className='content'>
           <View>
-            <Image src={author.avatar_url} className='avatar' />
+            <Image src={author.avatar_url} className={styles.avatar} />
           </View>
-          <View className='info'>
+          <View className={styles.info}>
             <View>
               <View className='name'>{author.loginname}</View>
               {reply_count > 0 ? (

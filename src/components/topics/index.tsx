@@ -3,8 +3,6 @@ import { View } from '@ui';
 import { Topic } from '@components/topic';
 import { ITopic } from '@interfaces/topic';
 
-import '../topic/index.scss';
-
 interface IProps {
   topics: ITopic[];
 }
