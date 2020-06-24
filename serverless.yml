@@ -29,3 +29,10 @@ inputs:
         protocols:
           - http
           - https
+    staticCdn:
+      cosConf:
+        bucket: serverless-cnode
+      cdnConf:
+        domain: static.cnode.yuga.chat
+        https:
+          certId: eGkM75xv

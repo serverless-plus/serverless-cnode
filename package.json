@@ -6,10 +6,7 @@
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production node ./dist/index.js",
-    "deploy": "sls deploy && yarn deploy:cos-dot-next && yarn deploy:cos-public && yarn deploy:cdn",
-    "deploy:cos-dot-next": "sls deploy --target=./cos-dot-next",
-    "deploy:cos-public": "sls deploy --target=./cos-public",
-    "deploy:cdn": "sls deploy --target=./cdn"
+    "deploy": "sls deploy"
   },
   "keywords": [
     "next.js",
