@@ -21,6 +21,7 @@ export default class Layout extends Component<{
             content='initial-scale=1.0, width=device-width'
           />
           {title ? <title>{title}</title> : ''}
+          <link rel='icon' href={`${process.env.STATIC_URL}/favicon.ico`} />
           <script dangerouslySetInnerHTML={{ __html: staticMarkup }}></script>
         </Head>
         {children}

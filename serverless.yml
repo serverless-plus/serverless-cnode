@@ -1,12 +1,13 @@
 org: serverless-cnode
 app: serverless-cnode
 stage: dev
-component: nextjs
+component: nextjs@dev
 name: serverless-cnode
 
 inputs:
   src:
-    src: ./
+    dist: ./
+    hook: npm run build
     exclude:
       - .env
   region: ap-guangzhou
@@ -17,22 +18,22 @@ inputs:
       - http
       - https
     environment: release
-    enableCORS: true #  允许跨域
-    customDomains: # 自定义域名绑定
-      - domain: cnode.yuga.chat # 待绑定的自定义的域名
-        certificateId: eGesL28k # 待绑定自定义域名的证书唯一 ID
-        # 自定义路径映射的路径。使用自定义映射时，可一次仅映射一个 path 到一个环境，也可映射多个 path 到多个环境。并且一旦使用自定义映射，原本的默认映射规则不再生效，只有自定义映射路径生效。
+    enableCORS: true
+    customDomains:
+      - domain: cnode.yuga.chat
+        certificateId: eGesL28k
         pathMappingSet:
           - path: /
             environment: release
-        # 绑定自定义域名的协议类型，默认与服务的前端协议一致。
         protocols:
           - http
           - https
-    staticCdn:
-      cosConf:
-        bucket: serverless-cnode
-      cdnConf:
-        domain: static.cnode.yuga.chat
-        https:
-          certId: eGkM75xv
+  staticCdn:
+    cosConf:
+      bucket: serverless-cnode
+    cdnConf:
+      # after you deploy CDN once, just set onlyRefresh to true for refresh CDN cache
+      onlyRefresh: true
+      domain: static.cnode.yuga.chat
+      https:
+        certId: eGkM75xv

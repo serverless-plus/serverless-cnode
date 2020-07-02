@@ -25,27 +25,27 @@ class NvMenu extends Component<IProps, {}> {
           <View className={styles['list-ul']}>
             <Link
               className={`icon-quanbu iconfont ${styles.item}`}
-              to={{ url: '/list?tab=all' }}>
+              to={{ url: '/', params: { tab: 'all' } }}>
               全部
             </Link>
             <Link
               className={`icon-hao iconfont ${styles.item}`}
-              to={{ url: '/list?tab=good' }}>
+              to={{ url: '/', params: { tab: 'good' } }}>
               精华
             </Link>
             <Link
               className={`icon-fenxiang iconfont ${styles.item}`}
-              to={{ url: '/list?tab=share' }}>
+              to={{ url: '/', params: { tab: 'share' } }}>
               分享
             </Link>
             <Link
               className={`icon-wenda iconfont ${styles.item}`}
-              to={{ url: '/list?tab=ask' }}>
+              to={{ url: '/', params: { tab: 'ask' } }}>
               问答
             </Link>
             <Link
               className={`icon-zhaopin iconfont ${styles.item}`}
-              to={{ url: '/list?tab=job' }}>
+              to={{ url: '/', params: { tab: 'job' } }}>
               招聘
             </Link>
             <Link

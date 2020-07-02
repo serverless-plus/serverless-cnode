@@ -16,7 +16,8 @@ function getCacheKey(req) {
 async function cacheRender(req, res) {
   const key = getCacheKey(req);
   // reder /list to /
-  const reqPath = req.path === '/list' ? '/' : req.path;
+  // const reqPath = req.path === '/list' ? '/' : req.path;
+  const reqPath = req.path;
   if (Cache.has(key)) {
     res.setHeader('X-Cache', 'HIT');
     res.send(Cache.get(key));
@@ -44,7 +45,7 @@ async function startServer() {
   app.setAssetPrefix(process.env.STATIC_PATH);
   server.use(Express.static(join(__dirname, '../public/static')));
 
-  server.get('/list', async (req, res) => {
+  server.get('/', async (req, res) => {
     return cacheRender(req, res);
   });
 

@@ -1,6 +1,6 @@
 import { View } from '@ui';
 import React, { Component } from 'react';
-import Router, { withRouter } from 'next/router';
+import { withRouter } from 'next/router';
 
 import * as utils from '@libs/utils';
 
@@ -28,9 +28,9 @@ class Link extends Component<IProps, PageState> {
 
   goTo = ({ url, params }) => {
     const href = url + (params ? '?' + utils.param(params) : '');
-    Router.push(href);
-    // window.location.href = href;
-    // return false;
+    // Router.push(href, as);
+    window.location.href = href;
+    return false;
   };
   render() {
     const { className, style, to, children, ...rest } = this.props;
