@@ -62,9 +62,10 @@ CDN_DOMAIN_CERTID=xxx
 
 ## 部署
 
-此项目会先将 `node_modules` 部署到 [层]()，然后在部署项目代码，这样下次部署项目
-时，如果 `node_modules` 没有修改，我们就不需要部署庞大的 `node_modules` 文件夹了
-。
+此项目会先将 `node_modules` 部署到
+[层](https://cloud.tencent.com/document/product/583/40159)，然后在部署项目代码，
+这样下次部署项目时，如果 `node_modules` 没有修改，我们就不需要部署庞大的
+`node_modules` 文件夹了。
 
 1. 部署层:
 
