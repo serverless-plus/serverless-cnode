@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "nodemon",
-    "build": "cross-env NODE_ENV=production next build && tsc --project tsconfig.server.json",
+    "build": "rimraf .next && cross-env NODE_ENV=production next build && tsc --project tsconfig.server.json",
+    "build:sls": "rimraf .next && cross-env NODE_ENV=production SERVERLESS=true next build && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production node ./dist/index.js",
-    "deploy": "sls deploy"
+    "deploy": "sls deploy",
+    "deploy:layer": "sls deploy --target=./layer"
   },
   "keywords": [
     "next.js",
@@ -63,6 +65,7 @@
     "nodemon": "^2.0.4",
     "postcss-loader": "^3.0.0",
     "postcss-pxtransform": "^2.2.9",
+    "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",

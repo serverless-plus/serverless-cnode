@@ -38,6 +38,9 @@ async function cacheRender(req, res) {
   }
 }
 
+// not report route for custom monitor
+const noReportRoutes = ['/_next', '/static'];
+
 async function startServer() {
   await app.prepare();
 
@@ -73,18 +76,33 @@ async function startServer() {
   });
 
   server.get('*', (req, res) => {
+    noReportRoutes.forEach((route) => {
+      if (req.path.indexOf(route) === 0) {
+        req['__SLS_NO_REPORT__'] = true;
+      }
+    });
     return handle(req, res);
   });
 
-  server.listen(port, () => {
-    console.log(`> Ready on http://localhost:${port}`);
-  });
+  // define binary type for response
+  // if includes, will return base64 encoded, very useful for images
+  server['binaryTypes'] = ['*/*'];
+
+  return server;
 }
 
-try {
-  startServer();
-} catch (e) {
-  throw e;
+if (process.env.SERVERLESS) {
+  module.exports = startServer;
+} else {
+  try {
+    startServer().then((server) => {
+      server.listen(port, () => {
+        console.log(`> Ready on http://localhost:${port}`);
+      });
+    });
+  } catch (e) {
+    throw e;
+  }
 }
 
 process.on('unhandledRejection', (e) => {

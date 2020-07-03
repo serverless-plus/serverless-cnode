@@ -7,15 +7,25 @@ name: serverless-cnode
 inputs:
   src:
     dist: ./
-    hook: npm run build
+    hook: npm run build:sls
     exclude:
       - .env
+      - '.git/**'
+      - 'docs/**'
       - '.next/cache/**'
-  region: ap-guangzhou
+      - 'node_modules/**'
+  region: ${env:REGION}
   runtime: Nodejs10.15
   functionName: serverless-cnode
+  layers:
+    - name: ${output:${stage}:${app}:${name}-layer.name}
+      version: ${output:${stage}:${app}:${name}-layer.version}
   functionConf:
     timeout: 10
+    environment:
+      variables:
+        NODE_ENV: production
+        SERVERLESS: true
   apigatewayConf:
     protocols:
       - http
@@ -23,8 +33,8 @@ inputs:
     environment: release
     enableCORS: true
     customDomains:
-      - domain: cnode.yuga.chat
-        certificateId: eGesL28k
+      - domain: ${env.APIGW_CUSTOM_DOMAIN}
+        certificateId: ${env.APIGW_CUSTOM_DOMAIN_CERTID}
         pathMappingSet:
           - path: /
             environment: release
@@ -33,10 +43,10 @@ inputs:
           - https
   staticCdn:
     cosConf:
-      bucket: serverless-cnode
+      bucket: ${env:BUCKET}
     cdnConf:
       # after you deploy CDN once, just set onlyRefresh to true for refresh CDN cache
       onlyRefresh: true
-      domain: static.cnode.yuga.chat
+      domain: ${env.CDN_DOMAIN}
       https:
-        certId: eGkM75xv
+        certId: ${env.CDN_DOMAIN_CERTID}

@@ -1,0 +1,13 @@
+org: serverless-cnode
+app: serverless-cnode
+stage: dev
+component: layer
+name: serverless-cnode-layer
+
+inputs:
+  region: ${env:REGION}
+  name: ${name}
+  src: ../node_modules
+  runtimes:
+    - Nodejs10.15
+    - Nodejs12.16
