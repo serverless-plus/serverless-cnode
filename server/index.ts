@@ -42,7 +42,6 @@ async function startServer() {
   await app.prepare();
 
   const server = Express();
-  app.setAssetPrefix(process.env.STATIC_PATH);
   server.use(Express.static(join(__dirname, '../public/static')));
 
   server.get('/', async (req, res) => {

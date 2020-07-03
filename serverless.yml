@@ -10,9 +10,12 @@ inputs:
     hook: npm run build
     exclude:
       - .env
+      - '.next/cache/**'
   region: ap-guangzhou
   runtime: Nodejs10.15
   functionName: serverless-cnode
+  functionConf:
+    timeout: 10
   apigatewayConf:
     protocols:
       - http
