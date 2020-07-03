@@ -44,6 +44,7 @@ class List extends Component<IProps, IState> {
 
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = props.state;
   }
   static getInitialProps({ query: { tab } }) {
