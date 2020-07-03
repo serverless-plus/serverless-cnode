@@ -6,8 +6,8 @@
     "build": "rimraf .next && cross-env NODE_ENV=production next build && tsc --project tsconfig.server.json",
     "build:sls": "rimraf .next && cross-env NODE_ENV=production SERVERLESS=true next build && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production node ./dist/index.js",
-    "deploy": "sls deploy",
-    "deploy:layer": "sls deploy --target=./layer"
+    "deploy": "serverless deploy",
+    "deploy:layer": "serverless deploy --target=./layer"
   },
   "keywords": [
     "next.js",

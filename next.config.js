@@ -3,20 +3,19 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const withPlugins = require('next-compose-plugins');
 
 const isProd = process.env.NODE_ENV === 'production';
-const CDN_URL = 'https://static.cnode.yuga.chat';
+
+// if not use CDN, change to your cos access domain
+const STATIC_URL = `https://${process.env.CDN_DOMAIN}`;
 
 const config = withPlugins([], {
   env: {
     STATIC_URL: isProd
-      ? CDN_URL
+      ? STATIC_URL
       : `http://localhost:${parseInt(process.env.PORT, 10) || 8000}`,
   },
-  assetPrefix: isProd ? CDN_URL : '',
+  assetPrefix: isProd ? STATIC_URL : '',
   webpack(config, options) {
     config.plugins = config.plugins || [];
-    // Do not run type checking twice:
-    // https://github.com/Realytics/fork-ts-checker-webpack-plugin#options
-    //
     if (options.isServer) config.plugins.push(new ForkTsCheckerWebpackPlugin());
 
     return config;

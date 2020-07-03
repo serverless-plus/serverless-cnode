@@ -39,6 +39,7 @@ $ npm run build
 
 ```dotenv
 # 腾讯云授权密钥
+TENCENT_APP_ID=xxx
 TENCENT_SECRET_ID=xxx
 TENCENT_SECRET_KEY=xxx
 
