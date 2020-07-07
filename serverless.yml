@@ -1,7 +1,7 @@
 org: serverless-cnode
 app: serverless-cnode
 stage: dev
-component: nextjs@dev
+component: nextjs
 name: serverless-cnode
 
 inputs:
@@ -33,8 +33,8 @@ inputs:
     environment: release
     enableCORS: true
     customDomains:
-      - domain: ${env.APIGW_CUSTOM_DOMAIN}
-        certificateId: ${env.APIGW_CUSTOM_DOMAIN_CERTID}
+      - domain: ${env:APIGW_CUSTOM_DOMAIN}
+        certificateId: ${env:APIGW_CUSTOM_DOMAIN_CERTID}
         pathMappingSet:
           - path: /
             environment: release
@@ -47,6 +47,6 @@ inputs:
     cdnConf:
       # after you deploy CDN once, just set onlyRefresh to true for refresh CDN cache
       onlyRefresh: true
-      domain: ${env.CDN_DOMAIN}
+      domain: ${env:CDN_DOMAIN}
       https:
-        certId: ${env.CDN_DOMAIN_CERTID}
+        certId: ${env:CDN_DOMAIN_CERTID}

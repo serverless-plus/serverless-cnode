@@ -37,33 +37,33 @@ export const checkAuthTimeout = (expirationTime) => {
 };
 
 export const auth = (accesstoken) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(authStart());
     const userInfo = { accesstoken: accesstoken };
-    return post({
-      url: 'https://cnodejs.org/api/v1/accesstoken',
-      data: userInfo,
-    })
-      .then((response) => {
-        if (response.data && response.data.success) {
-          let res = response.data;
-          let user = {
-            loginname: res.loginname,
-            avatar_url: res.avatar_url,
-            userId: res.id,
-            token: accesstoken,
-          };
-          // const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
-          store.setItem('user', JSON.stringify(user));
-          dispatch(authSuccess(user));
-          // store.setItem("expirationDate", expirationDate);
-          // store.setItem("userId", response.data.localId);
-          // dispatch(checkAuthTimeout(response.data.expiresIn));
-        }
-      })
-      .catch((err) => {
-        dispatch(authFail(err.response.data.error));
+    try {
+      const response = await post({
+        url: 'https://cnodejs.org/api/v1/accesstoken',
+        data: userInfo,
       });
+
+      if (response.data && response.data.success) {
+        let res = response.data;
+        let user = {
+          loginname: res.loginname,
+          avatar_url: res.avatar_url,
+          userId: res.id,
+          token: accesstoken,
+        };
+        // const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+        store.setItem('user', JSON.stringify(user));
+        dispatch(authSuccess(user));
+        // store.setItem("expirationDate", expirationDate);
+        // store.setItem("userId", response.data.localId);
+        // dispatch(checkAuthTimeout(response.data.expiresIn));
+      }
+    } catch (err) {
+      dispatch(authFail(err.response.data.error));
+    }
   };
 };
 

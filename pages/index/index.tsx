@@ -123,22 +123,21 @@ class List extends Component<IProps, IState> {
     return str;
   }
 
-  getTopics() {
+  async getTopics() {
     let params = this.state.searchKey;
     try {
-      get({
+      const res = await get({
         url: 'https://cnodejs.org/api/v1/topics',
         data: params,
-      }).then((res) => {
-        let data = res.data;
-        this.setState({
-          scroll: true,
-          loading: false,
-        });
-        if (data && data.data) {
-          this.mergeTopics(data.data);
-        }
       });
+      let data = res.data;
+      this.setState({
+        scroll: true,
+        loading: false,
+      });
+      if (data && data.data) {
+        this.mergeTopics(data.data);
+      }
     } catch (error) {
       // utils.showToast({
       //     title: "载入远程数据错误"

@@ -1,7 +1,6 @@
 import { join } from 'path';
 import Next from 'next';
 import Express from 'express';
-import { ParsedUrlQuery } from 'querystring';
 import Cache from './cache';
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -34,6 +33,7 @@ async function cacheRender(req, res) {
     res.setHeader('X-Cache', 'MISS');
     res.send(html);
   } catch (err) {
+    res.statusCode = 500;
     app.renderError(err, req, res, reqPath, req.query);
   }
 }
@@ -60,19 +60,14 @@ async function startServer() {
   });
 
   server.get('/login', async (req, res) => {
-    return await cacheRender(req, res);
+    return handle(req, res);
   });
 
   server.get('/add', async (req, res) => {
-    return await cacheRender(req, res);
+    return handle(req, res);
   });
   server.get('/message', async (req, res) => {
-    return await app.renderToHTML(
-      req,
-      res,
-      req.path,
-      req.query as ParsedUrlQuery,
-    );
+    return handle(req, res);
   });
 
   server.get('*', (req, res) => {

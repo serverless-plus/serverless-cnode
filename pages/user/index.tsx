@@ -71,8 +71,8 @@ class User extends Component<IProps, PageState> {
       currentData: currentData,
     }));
   };
-  getUser() {
-    let loginname = this.props.router.query.loginname;
+  async getUser() {
+    const { loginname } = this.props.router.query;
     if (!loginname) {
       utils.showToast({
         title: '缺少用户名参数',
@@ -82,27 +82,27 @@ class User extends Component<IProps, PageState> {
       });
       return false;
     }
-    get({
-      url: 'https://cnodejs.org/api/v1/user/' + loginname,
-    }).then((res) => {
-      let d = res.data;
-      if (d && d.data) {
-        let data = d.data;
-        this.setState({
-          user: data,
-        });
-        if (data.recent_replies.length > 0) {
-          this.setState({
-            currentData: data.recent_replies,
-          });
-        } else {
-          this.setState({
-            currentData: data.recent_topics,
-            selectItem: 2,
-          });
-        }
-      }
+    const res = await get({
+      url: `https://cnodejs.org/api/v1/user/${loginname}`,
     });
+
+    let d = res.data;
+    if (d && d.data) {
+      let data = d.data;
+      this.setState({
+        user: data,
+      });
+      if (data.recent_replies.length > 0) {
+        this.setState({
+          currentData: data.recent_replies,
+        });
+      } else {
+        this.setState({
+          currentData: data.recent_topics,
+          selectItem: 2,
+        });
+      }
+    }
   }
 
   render() {
@@ -154,7 +154,7 @@ class User extends Component<IProps, PageState> {
           </View>
           {currentData.map((item) => {
             return (
-              <View className='message'>
+              <View className='message' key={item.id}>
                 <View className='user'>
                   <Link
                     className='head'

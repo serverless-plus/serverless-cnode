@@ -60,12 +60,12 @@ class Add extends Component<IProps, PageState> {
         ],
         err: '',
         authorTxt:
-          '\n\n 来自拉风的 [nextjs-cnode](https://github.com/icai/nextjs-cnode)',
+          '\n\nfrom [serverless-cnode](https://github.com/serverless-plus/serverless-cnode)',
       },
     };
   }
 
-  addTopic() {
+  async addTopic() {
     let title = utils.trim(this.state.topic.title);
     let contents = utils.trim(this.state.topic.content);
     if (!title || title.length < 10) {
@@ -86,21 +86,20 @@ class Add extends Component<IProps, PageState> {
       accesstoken: this.props.userInfo.token,
     };
 
-    post({
-      data: postData,
-      url: 'https://cnodejs.org/api/v1/topics',
-    })
-      .then((resp) => {
-        let res = resp.data;
-        if (res.success) {
-          utils.navigateTo({ url: '/' });
-        } else {
-          utils.showToast({ title: res.error_msg });
-        }
-      })
-      .catch((resp) => {
-        console.info(resp);
+    try {
+      const resp = await post({
+        data: postData,
+        url: 'https://cnodejs.org/api/v1/topics',
       });
+      let res = resp.data;
+      if (res.success) {
+        utils.navigateTo({ url: '/' });
+      } else {
+        utils.showToast({ title: res.error_msg });
+      }
+    } catch (err) {
+      console.info(err);
+    }
   }
   handleTopicTabChange = (e) => {
     this.setState((prevState) => ({

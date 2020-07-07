@@ -5,7 +5,8 @@ const withPlugins = require('next-compose-plugins');
 const isProd = process.env.NODE_ENV === 'production';
 
 // if not use CDN, change to your cos access domain
-const STATIC_URL = `https://${process.env.CDN_DOMAIN}`;
+const STATIC_URL = `https://static.cnode.yuga.chat`;
+
 
 const config = withPlugins([], {
   env: {
