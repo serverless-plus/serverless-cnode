@@ -41,7 +41,7 @@ inputs:
         protocols:
           - http
           - https
-  staticCdn:
+  staticConf:
     cosConf:
       bucket: ${env:BUCKET}
     cdnConf:
