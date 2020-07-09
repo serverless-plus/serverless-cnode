@@ -17,7 +17,7 @@ class About extends Component {
           </dd>
           <dt>源码地址</dt>
           <dd>
-            <a href='https://github.com/icai/nextjs-cnode'>
+            <a href='https://github.com/serverless-plus/serverless-cnode'>
               https://github.com/serverless-plus/serverless-cnode
             </a>
           </dd>
