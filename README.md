@@ -12,9 +12,9 @@
 
 - [x] Typescript
 - [x] Next.js
-- [x] Express 自定义服务
-- [x] LRU 渲染缓存
-- [x] 基于 Next.js 的 Serverless 组件部署
+- [x] 自定义 Express Server
+- [x] LRU Render Cache
+- [x] 基于 Serverless Next.js 组件部署
 - [x] **静态资源分离，自动部署到 COS**
 - [x] **自动为静态 COS 配置 CDN**
 - [x] **node_modules 基于层部署，大大提高部署效率**
