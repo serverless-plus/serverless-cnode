@@ -28,10 +28,11 @@ async function cacheRender(req, res) {
     if (res.statusCode !== 200) {
       res.send(html);
       return;
+    } else {
+      Cache.set(key, html);
+      res.setHeader('X-Cache', 'MISS');
+      res.send(html);
     }
-    Cache.set(key, html);
-    res.setHeader('X-Cache', 'MISS');
-    res.send(html);
   } catch (err) {
     res.statusCode = 500;
     app.renderError(err, req, res, reqPath, req.query);
@@ -52,11 +53,11 @@ async function startServer() {
   });
 
   server.get('/user', async (req, res) => {
-    return await cacheRender(req, res);
+    return cacheRender(req, res);
   });
 
   server.get('/about', async (req, res) => {
-    return await cacheRender(req, res);
+    return cacheRender(req, res);
   });
 
   server.get('/login', async (req, res) => {

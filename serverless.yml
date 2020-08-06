@@ -35,6 +35,7 @@ inputs:
     customDomains:
       - domain: ${env:APIGW_CUSTOM_DOMAIN}
         certificateId: ${env:APIGW_CUSTOM_DOMAIN_CERTID}
+        isDefaultMapping: false
         pathMappingSet:
           - path: /
             environment: release
