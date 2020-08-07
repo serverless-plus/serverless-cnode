@@ -6,10 +6,6 @@ const options = {
     length: function (n, key) {
       return n * 2 + key.length;
     },
-    // @ts-ignore
-    dispose: function (key, n) {
-      n.close();
-    },
     maxAge: 1000 * 60 * 60,
   },
   cache = new LRU(options); // sets just the max size
